@@ -1,6 +1,6 @@
 
+/* 1주차 과제 
 #include <stdio.h>
-
 int main(void){
 	int result = 0;                        // 결과값 변수를 0으로 초기화한다.
 	int k = 0;                             // 변수 k를 0으로 초기화
@@ -13,7 +13,9 @@ int main(void){
 	}
 	printf("1부터 100까지 소수의 합 = %d\n", result);        // 결과 값을 출력한다
 }
+*/
 
+/* 2주차 과제 */
 #include <stdio.h>
 double factorial_iter(double n) {
 	if (n == 1) return 1;
@@ -31,9 +33,10 @@ double factorial_rec(double n) {
 int main(void) {
 	int n = 20;
 	double result_iter = factorial_iter(n);
-	printf("%.lf\n", result_iter);
+	printf("Iterative factorial result : %.lf\n", result_iter);
 
 	double result_rec = factorial_rec(n);
-	printf("%.lf\n", result_rec);
+	printf("Recursive factorial result : %.lf\n", result_rec);
 	return 0;
 }
+
