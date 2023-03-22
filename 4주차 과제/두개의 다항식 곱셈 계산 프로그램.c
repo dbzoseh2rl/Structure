@@ -1,6 +1,5 @@
 #include <stdio.h>
 #define MAX_DEGREE 101
-
 typedef struct {
     int degree;
     float coef[MAX_DEGREE];
@@ -17,7 +16,6 @@ void print_poly(Polynomial p, char str[]){
     }
     printf("%4.1f\n", p.coef[p.degree]);
 }
-
 //계수와 차수를 받는 함수
 Polynomial read_poly(){
     int i;
@@ -37,7 +35,7 @@ Polynomial add_poly(Polynomial a, Polynomial b){
     if (a.degree > b.degree) {
         p = a;
         for (i = 0; i <= b.degree; i++)
-           p.coef[i + (p.degree - b.degree)] += b.coef[i];
+            p.coef[i + (p.degree - b.degree)] += b.coef[i];
     }
     else {
         p = b;
@@ -51,7 +49,7 @@ Polynomial add_poly(Polynomial a, Polynomial b){
 Polynomial mult_poly(Polynomial a, Polynomial b){
     int i, j;
     Polynomial p;
-    for (i = 0; i < a.degree + b.degree + 1; i++)              //배열 초기
+    for (i = 0; i < a.degree + b.degree + 1; i++)              //배열 초기화
         p.coef[i] = 0;
     p.degree = a.degree + b.degree;
     for (i = 0; i < a.degree + 1; i++)
@@ -71,5 +69,3 @@ int main(){
     print_poly(b, "X * Y = ");
     return 0;
 }
-
-
