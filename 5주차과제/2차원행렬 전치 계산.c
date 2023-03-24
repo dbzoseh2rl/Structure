@@ -1,58 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-void printMatrix(int* array[], int row, int col) {
-	int i, j;
-	for (i = 0; i < row; i++) {
-		for (j = 0; j < col; j++)
-			printf("%d\t", array[i][j]);
-		printf("\n");
-	}
-}
-
-void transposeMbyN(int* original[], int* transposed[], int row, int col) {
-	int i, j, count = 0;
-
-	for (i = 0; i < row; i++) {
-		for (j = 0; j < col; j++) {
-			transposed[j][i] = original[i][j];
-			count++;
-		}
-	}
-	printf("%d개의 원소를 전치했습니다.\n", count);
-}
 
 int main() {
-	const int row = 3;
-	const int col = 4;
-	int** original = NULL;
-	int** transposed = NULL;
-	int i, j;
-	int array[3][4] = { {1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12} };
+    int rows, cols, i, j;
 
-	original = (int**)calloc(row, sizeof(int*));
-	for (i = 0; i < row; i++) {
-		original[i] = (int*)calloc(col, sizeof(int));
-		for (j = 0; j < col; j++)
-			original[i][j] = array[i][j];
-	}
-	printMatrix(original, 3, 4);
+    // 사용자로부터 행과 열을 입력 받음
+    printf("행과 열의 크기를 입력하세요: ");
+    scanf_s("%d %d", &rows, &cols);
 
-	transposed = (int**)calloc(col, sizeof(int*));
-	for (i = 0; i < col; i++)
-		transposed[i] = (int*)calloc(row, sizeof(int));
+    // 입력 받은 행과 열 크기에 따라 2차원 배열을 동적으로 할당함
+    int** matrix = (int**)malloc(rows * sizeof(int*));
+    for (i = 0; i < rows; i++) {
+        matrix[i] = (int*)malloc(cols * sizeof(int));
+    }
 
-	printf("-------------------------------\n");
-	transposeMbyN(original, transposed, 3, 4);
-	printMatrix(transposed, 4, 3);
+    // 사용자로부터 행렬의 요소들을 입력 받음
+    printf("행렬의 요소들을 입력하세요:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf_s("%d", &matrix[i][j]);
+        }
+    }
 
-	for (i = 0; i < row; i++)
-		free(original[i]);
-	free(original);
+    // 전치 행렬을 계산하여 출력함
+    printf("전치 행렬은 다음과 같습니다:\n");
+    for (i = 0; i < cols; i++) {
+        for (j = 0; j < rows; j++) {
+            printf("%d ", matrix[j][i]);
+        }
+        printf("\n");
+    }
 
-	for (i = 0; i < col; i++)
-		free(transposed[i]);
-	free(transposed);
-	return 0;
+    // 할당한 메모리를 해제함
+    for (i = 0; i < rows; i++) {
+        free(matrix[i]);
+    }
+    free(matrix);
+
+    return 0;
 }
