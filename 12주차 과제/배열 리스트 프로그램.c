@@ -69,12 +69,12 @@ int main() {
         printf("3. Print\n");
         printf("4. Exit\n");
         printf("Enter the menu ");
-        scanf("%d", &choice);
+        scanf_s("%d", &choice);
 
         switch (choice) {
         case 1:
             printf("추가할 노드의 데이터 입력: ");
-            scanf("%d", &data);
+            scanf_s("%d", &data);
             appendNode(data);
             break;
         case 2:
