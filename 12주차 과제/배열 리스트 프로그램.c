@@ -68,7 +68,7 @@ int main() {
         printf("2. Delete\n");
         printf("3. Print\n");
         printf("4. Exit\n");
-        printf("메뉴 선택: ");
+        printf("Enter the menu ");
         scanf("%d", &choice);
 
         switch (choice) {
